@@ -1,5 +1,5 @@
-def pick(t):
-    global ans, left, right
+def pick(t,left,right):
+    global ans
     if left * 2 >= total:
         ans += 2**(n-t) * fac[n-t]
         return
@@ -7,13 +7,9 @@ def pick(t):
         for i in range(n):
             if vis[i] == 0:
                 vis[i] = 1
-                left += arr[i]
-                pick(t+1)
-                left -= arr[i]
+                pick(t+1,left+arr[i],right)
                 if left >= right + arr[i]:
-                    right += arr[i]
-                    pick(t+1)
-                    right -= arr[i]
+                    pick(t+1,left,right+arr[i])
                 vis[i] = 0
     
 for T in range(1,int(input())+1):
@@ -26,5 +22,5 @@ for T in range(1,int(input())+1):
     ans = 0
     total = sum(arr)
     left, right = 0, 0
-    pick(0)
+    pick(0,left,right)
     print(f'#{T} {ans}')
