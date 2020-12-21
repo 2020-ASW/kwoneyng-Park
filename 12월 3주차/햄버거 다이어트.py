@@ -8,8 +8,7 @@ def calc(idx, tcal, tscr):
     if tcal + cal[idx] < l:
         calc(idx+1, tcal+cal[idx], tscr+score[idx])
     calc(idx+1, tcal, tscr)
-
-
+    
 
 for T in range(1,int(input())+1):
     ans = 0
