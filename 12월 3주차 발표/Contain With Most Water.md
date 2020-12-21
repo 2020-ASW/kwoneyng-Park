@@ -1,4 +1,4 @@
-![image-20201221191730260](Contain With Most Water.assets/image-20201221191730260.png)
+![image-20201221191730260](./img/image-20201221191730260.png)
 
 ### Container With Most Water
 
@@ -26,7 +26,7 @@
 
    ex)
 
-   ![image-20201221192741900](Contain With Most Water.assets/image-20201221192741900.png)
+   ![image-20201221192741900](./img/image-20201221192741900.png)
 
    노란색 > 빨간색
 
