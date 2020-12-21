@@ -1,4 +1,4 @@
-![image-20201221191730260](C:\Users\PARK\Desktop\알고리즘 스터디\12월 3주차 발표\Contain With Most Water.assets\image-20201221191730260.png)
+![image-20201221191730260](Contain With Most Water.assets/image-20201221191730260.png)
 
 ### Container With Most Water
 
@@ -26,7 +26,7 @@
 
    ex)
 
-   ![image-20201221192741900](C:\Users\PARK\Desktop\알고리즘 스터디\12월 3주차 발표\Contain With Most Water.assets\image-20201221192741900.png)
+   ![image-20201221192741900](Contain With Most Water.assets/image-20201221192741900.png)
 
    노란색 > 빨간색
 
