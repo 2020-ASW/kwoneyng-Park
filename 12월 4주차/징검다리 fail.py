@@ -1,21 +1,26 @@
-def go(rocks, lim, n):
-    mn = 999999999999
-    for i in range(len(rocks)-1):
-        mn = min(mn,rocks[i+1]-rocks[i])
-            
+def go(m, arr, n):
+    start = 0
+    for i in range(len(arr)):
+        cur = arr[i]
+        if cur - start >= m:
+            start = cur
+        else:
+            n -= 1
+            if n < 0:
+                return True
+    return False
+
 def solution(distance, rocks, n):
     answer = 0
     rocks.sort()
-    rocks.insert(0,0)
-    rocks.append(distance)
-    l, r = 0, distance
+    rocks += [distance]
+    l,r = 0, distance
     while l <= r:
-        mid = (l+r)//2
-        if go(rocks, mid, n):
-            l = mid + 1
-        else:
-            r = mid - 1
+        m = (l+r)//2
+        if go(m, rocks, n):
+            r = m - 1
+        else: l = m + 1 
     return r
-        
-d,r,n = 	25, [2, 14, 11, 21, 17], 2
+
+d,r,n = 25, [2, 14, 11, 21, 17], 2
 solution(d,r,n)
