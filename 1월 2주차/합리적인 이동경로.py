@@ -1,33 +1,5 @@
 from heapq import heappop, heappush
 
-def go(a,b):
-    q = []
-    q.append([0,a])
-    vis = [0]*(n+1)
-    vis[a] = 1
-    while q:
-        val, node = heappop(q)
-        if node == b:
-            return val
-        for nval, nxt in narr[node]:
-            if vis[nxt] == 0:
-                vis[nxt] = 1
-                nval += val
-                heappush(q,[nval,nxt])
-
-def find(a):
-    if dp[a] != -1:
-        return dp[a]
-    if a == 2:
-        dp[a] = 1
-        return 1
-    
-    dp[a] = 0
-    for nv, nxt in narr[a]:
-        if dt[nxt] < dt[a]:
-            dp[a] += find(nxt)
-    return dp[a]
-
 n,m = map(int,input().split())
 narr = [[] for _ in range(n+1)]
 S = 1
@@ -38,13 +10,23 @@ for i in range(m):
     narr[a].append([c,b])
     narr[b].append([c,a])
 
-dt = [0]
-for i in range(1, n+1):
-    dt.append(go(i,2))
+dt = [9999999]*(n+1)
 
-
-dp = [-1]*(n+1)
-print(find(1))
+q = []
+heappush(q,[0,2])
+dt[2] = 0
+dp = [0]*(n+1)
+dp[2] = 1
+while q:
+    val, node = heappop(q)
+    val *= -1
+    for nv, nxt in narr[node]:
+        nv -= val
+        if nv < dt[nxt]:
+            dt[nxt] = -nv
+            heappush(q,[-nv,nxt]) 
+        if dt[nxt] < val:
+            dp[node] += dp[nxt]
 
 print(dt)
 print(dp)
