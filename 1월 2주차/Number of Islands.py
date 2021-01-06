@@ -18,8 +18,8 @@ for i in range(n):
             q.append([i,j])
             while q:
                 x,y = q.popleft()
-                for i in range(4):
-                    xi,yi = x+dx[i], y+dy[i]
+                for p in range(4):
+                    xi,yi = x+dx[p], y+dy[p]
                     if 0<=xi<n and 0<=yi<m and cluster[xi][yi] == 0:
                         if grid[xi][yi] == '1':
                             cluster[xi][yi] = 1
