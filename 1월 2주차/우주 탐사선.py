@@ -23,5 +23,5 @@ for k in range(n):
 ans = 1e9
 vis = [0]*n
 vis[s] = 1
-exploration(s)
+exploration(s)      
 print(ans)
