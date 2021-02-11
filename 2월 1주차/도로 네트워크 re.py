@@ -27,7 +27,7 @@ def find(a,b):
     print(mn, mx)
     return
 
-def makeTree(cur, par, val=0):
+def makeDP(cur, par, val=0):
     depth[cur] = depth[par] + 1
     dp[cur][0][0] = par
     dp[cur][0][1] = min(dp[cur][0][1], val)
@@ -39,7 +39,7 @@ def makeTree(cur, par, val=0):
 
     for nval, nxt in narr[cur]:
         if nxt != par:
-            makeTree(nxt, cur, nval)
+            makeDP(nxt, cur, nval)
 
 n = int(input())
 narr = [[] for _ in range(n+1)]
@@ -53,7 +53,7 @@ maxLevel = int(log2(n)) + 1
 dp = [[[0,1e7,0] for i in range(maxLevel)] for i in range(n+1)]
 # dp[node][jump][0:node, 1:min, 2:max]
 depth = [-1]*(n+1)
-makeTree(1,0)
+makeDP(1,0)
 for i in range(1,maxLevel):
     for j in range(1,n+1):
         jump = dp[j][i-1][0]
