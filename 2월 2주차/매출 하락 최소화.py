@@ -20,7 +20,6 @@ def find(cur, sales, narr, dp):
     
     
 def solution(sales, links):
-    answer = 0
     n = len(sales)
     dp = [[0]*2 for i in range(n)]
     narr = [[] for _ in range(n)]
