@@ -24,6 +24,6 @@ for T in range(1,int(input())+1):
             tb *= (ft[30] / (ft[30-i] * ft[i])) * (b**i) * ((1-b) ** (30-i))
             ana += ta
             anb += tb
-    print(round(1-(1-ana)*(1-anb), 5))
-
+    ans = 1-(1-ana)*(1-anb)
+    print(f'#{T} {ans:.5f}')
     

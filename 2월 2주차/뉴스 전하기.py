@@ -23,5 +23,5 @@ for i in range(n):
 
 dp = [0]*n
 find(0)
-print(dp)
+# print(dp)
 print(dp[0])
