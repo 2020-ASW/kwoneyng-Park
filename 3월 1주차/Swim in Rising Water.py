@@ -22,7 +22,6 @@ def bfs(m, arr):
                 if xi == n-1 and yi == n-1:
                     return True
     return False
-    
 
 class Solution:
     def swimInWater(self, grid: List[List[int]]) -> int:
@@ -35,4 +34,3 @@ class Solution:
             else:
                 l = m+1
         return l
-        
