@@ -22,7 +22,7 @@ def solution(enter, leave):
             if not rs.get(j):
                 rs[j] = set()
             rs[j].add(i)
-            
+
     for i in range(1,n+1):
         ans.append(len(rs[i]))
     

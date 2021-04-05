@@ -23,9 +23,6 @@ def search(leaf,word):
     if cnt == 0:
         return False
     return [cnt, start, item]
-        
-    
-    
     
 
 def solution(data, word):
