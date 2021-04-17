@@ -33,9 +33,7 @@ def solution(n, z, roads, queries):
         if val - z > -z**2:
             heappush(hq, [cnt+1, val-z, nodes])
 
-    print(cost)
-    
-    
+ 
     for c in queries:
         start = 0
         if c > z**2:
