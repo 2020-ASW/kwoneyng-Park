@@ -1,40 +1,32 @@
-n, t = map(int,input().split())
-idxs = [0]*1000001
-exps = [0]*1000001
-idx_exp = [0]*n
-
+from collections import deque
+n,t = map(int,input().split())
+dungeon = []
 for idx in range(n):
-    need, exp = map(int,input().split())
-    idx_exp[idx] = exp
-    if exps[need] < exp:
-        exps[need] = exp
-        idxs[need] = idx
+    a,b = map(int,input().split())
+    dungeon.append([a,b])
 
-for i in range(1,1000001):
-    if exps[i-1] > exps[i]:
-        idxs[i] = idxs[i-1]
-        exps[i] = exps[i-1]
 
-arr = [list(map(int,input().split())) for _ in range(n)]
+arr = []
+for i in range(n):
+    arr.append(list(map(int,input().split())))
 
-for k in range(n):
-    for x in range(n):
-        for y in range(n):
-            if x!=y and arr[x][y] < arr[x][k] + arr[k][y]:
-                arr[x][y] = arr[x][k] + arr[k][y]
+dp = [[0]*(t+1) for _ in range(n)] # dp[사냥터][시간]
 
-cur_exp = 0
-cur_idx = idxs[0]
-while t:
-    if cur_exp < 1000001:
-        nxt_idx = idxs[cur_exp]
-        if idx_exp[cur_idx]*t < idx_exp[nxt_idx]*(t-arr[cur_idx][nxt_idx]):
-            t -= arr[cur_idx][nxt_idx]
-            cur_idx = nxt_idx
-        cur_exp += idx_exp[cur_idx]
-        t -= 1
-    else:
-        cur_exp += idx_exp[cur_idx]
-        t -= 1
+for i in range(n):
+    if dungeon[i][0] == 0:
+        exp = dungeon[i][1]
+        for j in range(1,t+1):
+            dp[i][j] = dp[i][j-1] + exp
 
-print(cur_exp)
+for i in range(n):
+    need = dungeon[i][0]
+    exp = dungeon[i][1]
+    for j in range(n):
+        for k in range(n):
+            if i == k:
+                continue
+            if dp[k][j] > need and j+arr[i][k] <= t:
+                dp[i][j+arr[i][k]] = max(dp[i][j+arr[i][k]], dp[k][j] + exp)
+
+for i in dp:
+    print(i)
