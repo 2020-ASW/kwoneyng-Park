@@ -35,7 +35,9 @@ while queue and k:
     if son:
         son.sort()
         x,y,cur = son[0]
+        ex,ey = customer[cur]
         queue = deque()
         queue.append((x,y))
+        while queue
         m -= 1
 
