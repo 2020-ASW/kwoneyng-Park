@@ -1,6 +1,8 @@
 class Heap{
     arr = [null];
+    length = 0
     push(x){
+        this.length++
         let n = this.arr.length;
         this.arr.push(x);
         while (n > 1 && this.arr[parseInt(n/2)] < x){
@@ -13,6 +15,7 @@ class Heap{
         if (this.arr.length < 2){
             return 0;
         }
+        this.length--
         let ans = this.arr[1];
         this.arr[1] = this.arr[this.arr.length-1];
         this.arr.pop()
